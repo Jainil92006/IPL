@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RCB Fan Hub - Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="app.js"></script>
+  <style>
+    /* Page fade-in */
+    body { animation: fadeIn 1s ease-in-out; }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+
+    /* Hero zoom */
+    .hero-bg { background-size: 110%; animation: zoomIn 12s infinite alternate ease-in-out; }
+    @keyframes zoomIn { from {background-size: 110%;} to {background-size: 120%;} }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(16px) scale(0.98); filter: blur(2px); transition: opacity .6s ease, transform .6s ease, filter .6s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+
+    /* Animated gradient helper */
+    .animate-gradient { background-size: 200% 200%; animation: gradientShift 8s ease infinite; }
+    @keyframes gradientShift { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position: 0% 50%;} }
+
+    /* Counter animation */
+    .counter { transition: all 0.3s ease; }
+    .pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 5px rgba(236, 72, 153, 0.3); } 50% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.6); } }
+    
+    /* Live indicator */
+    .live-dot { animation: livePulse 1.5s ease-in-out infinite; }
+    @keyframes livePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    
+    /* Page transitions */
+    .page-transition { transition: all 0.3s ease; }
+    .loading-overlay { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: linear-gradient(45deg, #1f2937, #374151); 
+      z-index: 9999; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(236, 72, 153, 0.3);
+      border-top: 3px solid #ec4899;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+
+
+    
+  </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen page-transition">
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="text-center">
+      <div class="loading-spinner"></div>
+      <div class="mt-4 text-lg font-semibold">Loading RCB Fan Hub...</div>
+    </div>
+  </div>
+
+  <header class="bg-gradient-to-r from-red-700 via-red-600 to-red-800 p-4 flex justify-between items-center shadow-lg">
+  <div class="flex items-center gap-3">
+    <img src="assests/logo.png" class="h-13 w-14">
+    <h1 class="text-2xl font-bold tracking-wide">RCB Fan Hub</h1>
+  </div>
+
+  <!-- Hamburger (mobile only) -->
+  <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none">
+    ☰
+  </button>
+
+<nav class="hidden md:flex space-x-6 text-sm font-medium text-white items-center relative">
+
+  <a href="index.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Home</a>
+
+  <a href="players.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Players</a>
+
+  <a href="schedule.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Schedule</a>
+
+  <a href="points.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Points Table</a>
+
+  <a href="stats.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Stats</a>
+
+  <a href="polls.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Polls</a>
+
+  <a href="history.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">History</a>
+
+  <!-- Dropdown Menu -->
+  <div class="relative group">
+    <button class="relative text-white flex items-center focus:outline-none">
+      More <span class="ml-1">&#9662;</span>
+    </button>
+    <div class="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+      <a href="https://dash.royalchallengers.com/collections/mixer-market" class="block px-4 py-2 hover:bg-gray-200">DASH OF RCB</a>
+      <a href="https://www.royalchallengers.com/rcb-cricket-photos" class="block px-4 py-2 hover:bg-gray-200">PHOTOS</a>
+      <a href="https://www.iplt20.com/auction" class="block px-4 py-2 hover:bg-gray-200">AUCTION</a>
+      <a href="https://www.royalchallengers.com/about-us" class="block px-4 py-2 hover:bg-gray-200">ABOUT US</a>
+      <a href="https://www.royalchallengers.com/terms-conditions" class="block px-4 py-2 hover:bg-gray-200">TERMS AND CONDITIONS</a>
+    </div>
+  </div>
+
+</nav>
+
+
+</header>
+
+  
+
+
+  <div id="cookieConsentBanner"
+     class="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-4 flex flex-col md:flex-row items-center justify-between gap-4 shadow-lg z-50">
+  
+  <div class="max-w-3xl text-sm opacity-90">
+    We and our third-party partners use cookies and similar technologies to run the website. Some cookies are strictly
+    necessary. We also use optional cookies to provide a more personalized experience, improve the way our websites work
+    and support our marketing operations. Optional cookies will only be set with your consent. You can manage your cookie
+    preferences through the "Cookie Settings" button. For more information see our
+    <a href="privacy.html" class="underline text-red-400">Privacy Notice</a>.
+  </div>
+
+  <div class="flex gap-4">
+    <button id="cookieSettingsBtn"
+            class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded">Cookie Settings</button>
+    <button id="rejectCookiesBtn"
+            class="bg-red-600 hover:bg-red-500 px-4 py-2 rounded">Reject All</button>
+    <button id="acceptCookiesBtn"
+            class="bg-green-600 hover:bg-green-500 px-4 py-2 rounded">Accept All</button>
+  </div>
+</div>
+
+
+  <!-- Hero Section -->
+  <section class="relative h-[700px] flex items-center justify-center text-center overflow-hidden">
+
+    <!-- Slideshow Background -->
+    <div id="heroSlideshow" class="absolute inset-0 w-full h-full">
+      <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 opacity-100"
+           style="background-image:url('assests/p1.jpg')"></div>
+      <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 opacity-0"
+           style="background-image:url('assests/p2.jpg')"></div>
+      <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 opacity-0"
+           style="background-image:url('assests/p3.jpg')"></div>
+      <div class="absolute inset-0 bg-center bg-cover transition-opacity duration-1000 opacity-0"
+           style="background-image:url('assests/p4.jpg ')"></div>
+    </div>
+  
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-red-900/40 to-transparent"></div>
+  
+    <!-- Hero Text -->
+    <div class="relative z-10">
+      <h2 class="text-4xl md:text-5xl font-extrabold drop-shadow-lg animate-bounce">
+        Feel the Roar 🔥
+      </h2>
+      <p class="mt-4 text-lg opacity-90">Cheer for Royal Challengers Bangalore all season long!</p>
+      <a href="players.html"
+         class="mt-6 inline-block bg-red-600 px-6 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition">
+        Explore Players
+      </a>
+    </div>
+  </section>
+
+ <section class="bg-gray-800 text-white py-16">
+    <div class="max-w-5xl mx-auto text-center px-6">
+      <h2 class="text-4xl font-extrabold mb-8">🚀 Live Match Update</h2>
+      <div id="liveScore"
+        class="bg-gray-900 rounded-2xl p-12 shadow-lg hover:shadow-2xl transition-transform transform hover:scale-105">
+        <div class="live-score-inner text-2xl font-semibold text-red-400">
+          Loading live match info...
+        </div>
+        <a href="schedule.html"
+         class="mt-6 inline-block bg-red-600 px-6 py-3 rounded-full font-bold shadow-lg hover:scale-105 transition">
+        Schedule
+      </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Stats Section -->
+  <section class="bg-gray-900 text-white py-16">
+    <div class="max-w-6xl mx-auto text-center px-6">
+      <h2 class="text-4xl font-extrabold mb-10">📊 RCB Live Stats</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="reveal bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+          <div class="text-5xl mb-4">🏏</div>
+          <div class="text-3xl font-extrabold counter" id="totalRuns">0</div>
+          <div class="text-gray-400 mt-2">Total Runs</div>
+        </div>
+
+        <div class="reveal bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+          <div class="text-5xl mb-4">🎯</div>
+          <div class="text-3xl font-extrabold counter" id="totalWickets">0</div>
+          <div class="text-gray-400 mt-2">Wickets</div>
+        </div>
+
+        <div class="reveal bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+          <div class="text-5xl mb-4">📅</div>
+          <div class="text-3xl font-extrabold counter" id="matchesPlayed">0</div>
+          <div class="text-gray-400 mt-2">Matches Played</div>
+        </div>
+
+        <div class="reveal bg-gray-800 rounded-2xl p-8 shadow-lg hover:scale-105 transition">
+          <div class="text-5xl mb-4">🏆</div>
+          <div class="text-3xl font-extrabold counter" id="winRate">0%</div>
+          <div class="text-gray-400 mt-2">Win Rate</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+ 
+  <section class="bg-gray-800 text-white py-16">
+    <div class="max-w-5xl mx-auto text-center px-6">
+      <h2 class="text-4xl font-extrabold mb-10">📰 Latest RCB News</h2>
+
+      <div id="newsList" class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+  
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+<!-- 🌍 Global Fan Map Section -->
+<section class="bg-gray-900 text-white py-16">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-extrabold mb-8 text-center">🌍 Global Fan Map</h2>
+    <p class="mb-10 opacity-80 text-center">Pin your city and join the worldwide RCB Family!</p>
+
+    <div class="flex flex-col md:flex-row gap-8 items-start">
+      <!-- Map -->
+      <div class="flex-1">
+        <div id="fanMap" class="rounded-xl shadow-lg border border-gray-700 h-[400px] w-full"></div>
+      </div>
+
+      <!-- Form -->
+      <div class="w-full md:w-[350px] bg-gray-800 p-6 rounded-xl shadow-md">
+        <h3 class="text-xl font-bold mb-4">📍 Add Your Location</h3>
+        <form id="fanForm" class="flex flex-col gap-4">
+          <input type="text" id="fanName" placeholder="Your Name"
+                 class="px-4 py-2 rounded bg-gray-700 text-white focus:outline-none" required>
+          <input type="text" id="fanCity" placeholder="Your City (e.g. Bangalore, London)"
+                 class="px-4 py-2 rounded bg-gray-700 text-white focus:outline-none" required>
+          <button type="submit"
+                  class="bg-red-600 hover:bg-red-500 px-6 py-2 rounded font-bold shadow">🚀 Pin Me!</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Leaflet CDN -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="fan-map.js"></script>
+
+  
+
+  <!-- Join RCB Fan Army CTA Section -->
+  <section class="relative bg-gradient-to-r from-red-700 via-red-600 to-red-800 text-white py-20">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
+
+      <div>
+        <h2 class="text-5xl font-extrabold mb-4">🔥 Join the RCB Fan Army</h2>
+        <p class="text-lg opacity-90 max-w-xl">
+          Get exclusive match reminders, polls, and live updates directly from the RCB camp. Stay connected and roar
+          with the team!
+        </p>
+      </div>
+
+      <a href="polls.html"
+        class="bg-white text-red-600 font-bold px-8 py-4 rounded-full shadow-lg hover:bg-gray-100 transform hover:scale-105 transition">
+        🚀 Take a Poll & Join Now
+      </a>
+
+    </div>
+  </section>
+
+
+
+    <script src="data.js"></script>
+  <script>
+   const banner = document.getElementById('cookieConsentBanner');
+
+  function hideBanner() {
+    banner.style.display = 'none';
+  }
+
+  // Accept cookies
+  document.getElementById('acceptCookiesBtn').onclick = () => {
+    localStorage.setItem('rcb_cookie_consent', 'accepted');
+    hideBanner();
+  };
+
+  // Reject cookies
+  document.getElementById('rejectCookiesBtn').onclick = () => {
+    localStorage.setItem('rcb_cookie_consent', 'rejected');
+    hideBanner();
+  };
+
+  // Optional: Cookie settings button (doesn’t affect choice)
+  document.getElementById('cookieSettingsBtn').onclick = () => {
+    alert('Here you can implement a detailed cookie settings modal.');
+  };
+
+  // Show only if no choice is stored
+  window.addEventListener('load', () => {
+    const choice = localStorage.getItem('rcb_cookie_consent');
+    if (!choice) {
+      banner.style.display = 'flex';
+    } else {
+      banner.style.display = 'none';
+    }
+  });
+
+
+    const DATA = JSON.parse(localStorage.getItem("rcb_data_v1")) || INITIAL_DATA;
+
+    function renderNews(){
+      const newsList = document.getElementById("newsList");
+      newsList.innerHTML = "";
+      
+      if (DATA.news && DATA.news.length > 0) {
+        DATA.news.slice().reverse().forEach((n, i)=>{
+          const wrapper = document.createElement("div");
+          wrapper.className ="rounded-lg p-[1px] bg-gradient-to-r from-red-600 via-red-500 to-red-700 shadow hover:scale-105 transition reveal show";
+          wrapper.style.transitionDelay = `${Math.min(i*80, 500)}ms`;
+          const card = document.createElement("div");
+          card.className = "bg-gray-800 rounded-lg p-4";
+          card.innerHTML = `
+            <div class="text-lg font-semibold">${n.title}</div>
+            <div class="text-xs opacity-70">${n.date}</div>
+            <p class="mt-2 opacity-90">${n.body}</p>`;
+
+          wrapper.appendChild(card);
+          newsList.appendChild(wrapper);
+        });
+      } else {
+        // Show placeholder when no news
+        const wrapper = document.createElement("div");
+        wrapper.className = "rounded-lg p-[1px] bg-gradient-to-r from-red-600 via-red-500 to-red-700 shadow reveal";
+        const card = document.createElement("div");
+        card.className = "bg-gray-800 rounded-lg p-4 text-center";
+        card.innerHTML = `
+          <div class="text-lg font-semibold">No Recent News</div>
+          <div class="text-sm opacity-70 mt-2">Check back later for updates</div>
+        `;
+        wrapper.appendChild(card);
+        newsList.appendChild(wrapper);
+      }
+    }
+
+    function renderLiveScore(){
+      const c = document.getElementById("liveScore");
+      const inner = c.querySelector('.live-score-inner');
+      
+      // Check if there's a live match today (2026)
+      const today = new Date();
+      const todayStr = today.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+      
+      // Check if any match is today (only for 2026)
+      const liveMatch = DATA.schedule.find(match => 
+        (match.date === todayStr || 
+         match.date.includes(today.getDate().toString()) && 
+         match.date.includes(today.toLocaleDateString('en-GB', { month: 'long' }))) &&
+        match.date.includes('2026')
+      );
+      
+      if (liveMatch) {
+        // Simulate live score data
+        const overs = Math.floor(Math.random() * 20) + 1;
+        const balls = Math.floor(Math.random() * 6);
+        const runs = Math.floor(Math.random() * 200) + 50;
+        const wickets = Math.floor(Math.random() * 6);
+        const runRate = (runs / (overs + balls/6)).toFixed(1);
+        
+        inner.innerHTML = `
+          <div class="text-xl font-bold">${liveMatch.match}</div>
+          <div class="text-3xl font-extrabold mt-2 pulse-glow">${runs} / ${wickets}</div>
+          <div class="opacity-80">${overs}.${balls} overs • RR ${runRate}</div>
+          <div class="text-sm text-green-400 mt-2 live-dot">🔴 LIVE NOW</div>
+        `;
+      } else {
+        inner.innerHTML = `
+          <div class="text-xl font-bold">No Live Match Today</div>
+          <div class="text-lg opacity-80 mt-2">Check schedule for upcoming matches</div>
+          <div class="text-sm text-gray-400 mt-2">Next: ${DATA.schedule[0]?.match || 'TBA'}</div>
+        `;
+      }
+    }
+
+
+
+    // Animate counter function
+    function animateCounter(elementId, targetValue, suffix = '') {
+      const element = document.getElementById(elementId);
+      const startValue = parseInt(element.textContent) || 0;
+      const increment = (targetValue - startValue) / 30;
+      let currentValue = startValue;
+      
+      const timer = setInterval(() => {
+        currentValue += increment;
+        if ((increment > 0 && currentValue >= targetValue) || (increment < 0 && currentValue <= targetValue)) {
+          currentValue = targetValue;
+          clearInterval(timer);
+        }
+        element.textContent = Math.floor(currentValue) + suffix;
+      }, 50);
+    }
+
+    // Update live stats
+    function updateLiveStats() {
+      // Calculate stats from player data
+      const totalRuns = DATA.players.reduce((sum, player) => sum + player.stats.runs, 0);
+      const totalWickets = DATA.players.reduce((sum, player) => sum + player.stats.wickets, 0);
+      const matchesPlayed = Math.floor(Math.random() * 20) + 15; // Simulate matches
+      const winRate = Math.floor(Math.random() * 30) + 50; // Simulate win rate
+      
+      animateCounter('totalRuns', totalRuns);
+      animateCounter('totalWickets', totalWickets);
+      animateCounter('matchesPlayed', matchesPlayed);
+      animateCounter('winRate', winRate, '%');
+    }
+
+    // IntersectionObserver for reveal-on-scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    function setupReveals(){
+      document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    }
+
+    // Initial renders
+    renderNews();
+    renderLiveScore();
+    updateLiveStats();
+
+    // Mark sections to reveal
+    document.getElementById('liveScore').classList.add('reveal');
+    setupReveals();
+
+    // Auto-refresh live score every 30 seconds
+    setInterval(() => {
+      renderLiveScore();
+    }, 30000);
+
+    // Auto-refresh stats every 2 minutes
+    setInterval(() => {
+      updateLiveStats();
+    }, 120000);
+
+    // Hero slideshow functionality
+    const slides = document.querySelectorAll("#heroSlideshow div");
+    let currentSlide = 0;
+
+    function showNextSlide() {
+      slides[currentSlide].classList.remove("opacity-100");
+      slides[currentSlide].classList.add("opacity-0");
+
+      currentSlide = (currentSlide + 1) % slides.length;
+
+      slides[currentSlide].classList.remove("opacity-0");
+      slides[currentSlide].classList.add("opacity-100");
+    }
+
+    // Start slideshow if slides exist
+    if (slides.length > 0) {
+      setInterval(showNextSlide, 2800); // Change every 5 seconds
+    }
+
+    // Optional: hook to refresh news from API could go here
+
+    // Hide loading overlay after page loads
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loadingOverlay').classList.add('hidden');
+      }, 1500);
+    });
+    
+
+  </script>
+</body>
+</html>
