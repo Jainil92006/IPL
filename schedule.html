@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>RCB Match Schedule</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="app.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-red-700 via-red-600 to-red-800 p-4 flex justify-between items-center shadow-lg">
+  <div class="flex items-center gap-3">
+    <img src="assests/logo.png" class="h-13 w-14">
+    <h1 class="text-2xl font-bold tracking-wide">RCB Fan Hub</h1>
+  </div>
+
+  <!-- Hamburger (mobile only) -->
+  <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none">
+    ☰
+  </button>
+
+<nav class="hidden md:flex space-x-6 text-sm font-medium text-white items-center relative">
+
+  <a href="index.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Home</a>
+
+  <a href="players.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Players</a>
+
+  <a href="schedule.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Schedule</a>
+
+  <a href="points.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Points Table</a>
+
+  <a href="stats.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Stats</a>
+
+  <a href="polls.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Polls</a>
+
+  <a href="history.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">History</a>
+
+  <!-- Dropdown Menu -->
+  <div class="relative group">
+    <button class="relative text-white flex items-center focus:outline-none">
+      More <span class="ml-1">&#9662;</span>
+    </button>
+    <div class="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+      <a href="https://dash.royalchallengers.com/collections/mixer-market" class="block px-4 py-2 hover:bg-gray-200">DASH OF RCB</a>
+      <a href="https://www.royalchallengers.com/rcb-cricket-photos" class="block px-4 py-2 hover:bg-gray-200">PHOTOS</a>
+      <a href="https://www.iplt20.com/auction" class="block px-4 py-2 hover:bg-gray-200">AUCTION</a>
+      <a href="https://www.royalchallengers.com/about-us" class="block px-4 py-2 hover:bg-gray-200">ABOUT US</a>
+      <a href="https://www.royalchallengers.com/terms-conditions" class="block px-4 py-2 hover:bg-gray-200">TERMS AND CONDITIONS</a>
+    </div>
+  </div>
+
+</nav>
+
+
+</header>
+
+  
+
+  <!-- Page Title -->
+  <section class="text-center py-10 bg-red-50">
+    <h2 class="text-4xl font-bold text-black-600 animate-pulse">🏏 RCB Match Schedule</h2>
+    <p class="text-gray-600 mt-2">Track upcoming fixtures, live status, venues, and countdown timers</p>
+  </section>
+
+  <!-- Live Match Status -->
+  <section class="max-w-3xl mx-auto px-6 my-10">
+    <div class="rounded-3xl border border-red-600 shadow-xl bg-white p-8 text-center animate-fadeIn">
+      <h3 class="text-2xl font-bold text-red-700 mb-5">🔴 Live Match Status</h3>
+      <div id="liveMatchStatus" class="space-y-3">
+        <div class="text-3xl font-extrabold text-gray-800" id="currentMatch">No Live Match</div>
+        <div class="text-lg text-gray-600" id="matchTime">Check back later</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule List -->
+  <section class="max-w-7xl mx-auto px-6 pb-16">
+    <div id="scheduleList" class="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 py-6 text-center text-sm text-gray-600 border-t border-gray-200">
+    © 2026 Royal Challengers Bangalore Fan Hub. All Rights Reserved.
+  </footer>
+
+  <!-- Data + Script -->
+  <script>
+    const DATA = {
+      schedule: [
+        { match: "RCB 🆚 MI", date: "2026-04-01T19:30:00", venue: "M. Chinnaswamy Stadium, Bengaluru" },
+        { match: "RCB 🆚 CSK", date: "2026-04-05T19:30:00", venue: "M. A. Chidambaram Stadium, Chennai" },
+        { match: "RCB 🆚 KKR", date: "2026-04-09T19:30:00", venue: "Eden Gardens, Kolkata" },
+        { match: "RCB 🆚 DC", date: "2026-04-13T19:30:00", venue: "Arun Jaitley Stadium, Delhi" },
+        { match: "RCB 🆚 RR", date: "2026-04-18T19:30:00", venue: "Sawai Mansingh Stadium, Jaipur" },
+        { match: "RCB 🆚 PBKS", date: "2026-04-22T19:30:00", venue: "IS Bindra Stadium, Mohali" },
+        { match: "RCB 🆚 SRH", date: "2026-04-27T19:30:00", venue: "Rajiv Gandhi Stadium, Hyderabad" },
+        { match: "RCB 🆚 GT", date: "2026-05-02T19:30:00", venue: "Narendra Modi Stadium, Ahmedabad" },
+        { match: "RCB 🆚 LSG", date: "2026-05-06T19:30:00", venue: "Ekana Stadium, Lucknow" },
+        { match: "RCB 🆚 MI", date: "2026-05-10T19:30:00", venue: "Wankhede Stadium, Mumbai" }
+      ]
+    };
+
+    function formatDateTime(dateString) {
+      return new Date(dateString).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' });
+    }
+
+    function updateCountdown(targetDate, elementId) {
+      const now = new Date().getTime();
+      const target = new Date(targetDate).getTime();
+      const distance = target - now;
+
+      if (distance < 0) {
+        document.getElementById(elementId).innerHTML = `<span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-semibold">Started</span>`;
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById(elementId).innerHTML = `
+        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold">
+          ⏱ ${days}d ${hours}h ${minutes}m ${seconds}s
+        </span>`;
+    }
+
+    function updateLiveMatchStatus() {
+      const now = new Date();
+      const liveMatch = DATA.schedule.find(match =>
+        new Date(match.date).toDateString() === now.toDateString()
+      );
+
+      if (liveMatch) {
+        document.getElementById("currentMatch").textContent = liveMatch.match;
+        document.getElementById("matchTime").innerHTML = `
+          <div class="text-green-600 font-bold text-xl">🔴 LIVE NOW</div>
+          <div class="mt-1 text-gray-700">${liveMatch.venue}</div>
+        `;
+      } else {
+        const nextMatch = DATA.schedule.find(match =>
+          new Date(match.date).getTime() > now.getTime()
+        );
+
+        if (nextMatch) {
+          document.getElementById("currentMatch").textContent = nextMatch.match;
+          document.getElementById("matchTime").innerHTML = `
+            <div class="text-blue-600 font-semibold text-lg">⏰ Next Match</div>
+            <div class="mt-1 text-gray-700">${formatDateTime(nextMatch.date)}</div>
+          `;
+        } else {
+          document.getElementById("currentMatch").textContent = "No Matches Scheduled";
+          document.getElementById("matchTime").textContent = "Check back later";
+        }
+      }
+    }
+
+    function renderSchedule() {
+      const container = document.getElementById("scheduleList");
+      container.innerHTML = "";
+
+      DATA.schedule.forEach((m, index) => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-3xl shadow-lg p-6 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 animate-fadeIn";
+
+        const countdownId = `countdown-${index}`;
+
+        card.innerHTML = `
+          <div class="flex flex-col space-y-4">
+            <div class="text-xl font-bold text-red-700">${m.match}</div>
+            <div class="text-sm text-gray-600">${formatDateTime(m.date)}</div>
+            <div class="text-sm text-gray-600 font-medium">${m.venue}</div>
+            <div id="${countdownId}" class="text-sm"></div>
+          </div>
+        `;
+
+        container.appendChild(card);
+
+        setInterval(() => updateCountdown(m.date, countdownId), 1000);
+      });
+    }
+
+    renderSchedule();
+    updateLiveMatchStatus();
+    setInterval(updateLiveMatchStatus, 30000);
+  </script>
+
+</body>
+
+</html>

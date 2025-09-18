@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>RCB Fan Polls</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-900 min-h-screen font-sans">
+
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-red-700 via-red-600 to-red-800 p-4 flex justify-between items-center shadow-lg">
+  <div class="flex items-center gap-3">
+    <img src="assests/logo.png" class="h-13 w-14">
+    <h1 class="text-2xl font-bold tracking-wide">RCB Fan Hub</h1>
+  </div>
+
+  <!-- Hamburger (mobile only) -->
+  <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none">
+    ☰
+  </button>
+
+<nav class="hidden md:flex space-x-6 text-sm font-medium text-white items-center relative">
+
+  <a href="index.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Home</a>
+
+  <a href="players.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Players</a>
+
+  <a href="schedule.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Schedule</a>
+
+  <a href="points.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Points Table</a>
+
+  <a href="stats.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Stats</a>
+
+  <a href="polls.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Polls</a>
+
+  <a href="history.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">History</a>
+
+  <!-- Dropdown Menu -->
+  <div class="relative group">
+    <button class="relative text-white flex items-center focus:outline-none">
+      More <span class="ml-1">&#9662;</span>
+    </button>
+    <div class="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+      <a href="https://dash.royalchallengers.com/collections/mixer-market" class="block px-4 py-2 hover:bg-gray-200">DASH OF RCB</a>
+      <a href="https://www.royalchallengers.com/rcb-cricket-photos" class="block px-4 py-2 hover:bg-gray-200">PHOTOS</a>
+      <a href="https://www.iplt20.com/auction" class="block px-4 py-2 hover:bg-gray-200">AUCTION</a>
+      <a href="https://www.royalchallengers.com/about-us" class="block px-4 py-2 hover:bg-gray-200">ABOUT US</a>
+      <a href="https://www.royalchallengers.com/terms-conditions" class="block px-4 py-2 hover:bg-gray-200">TERMS AND CONDITIONS</a>
+    </div>
+  </div>
+
+</nav>
+
+
+</header>
+
+  
+
+   <section class="text-center py-10 bg-red-50">
+    <h2 class="text-4xl font-bold text-black-600 animate-pulse">Voting & Polls</h2>
+    <p class="text-gray-600 mt-2">Vote for your favorite RCB player!</p>
+  </section>
+
+
+  <main class="p-6 max-w-5xl mx-auto">
+
+    <!-- Poll Buttons with Photos -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow hover:scale-105 transition">
+        <img src="assests/virat.jpg" alt="Virat Kohli" class="w-24 h-24 rounded-full object-cover mb-4 border">
+        <button onclick="vote('Virat Kohli')" class="px-4 py-2 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition">Virat Kohli</button>
+      </div>
+
+      <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow hover:scale-105 transition">
+        <img src="assests/Rajat.jpg" alt="Rajat Patidar" class="w-24 h-24 rounded-full object-cover mb-4 border">
+        <button onclick="vote('Rajat Patidar')" class="px-4 py-2 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition">Rajat Patidar</button>
+      </div>
+
+      <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow hover:scale-105 transition">
+        <img src="assests/salt.jpg" alt="Phil Salt" class="w-24 h-24 rounded-full object-cover mb-4 border">
+        <button onclick="vote('Phil Salt')" class="px-4 py-2 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition">Phil Salt</button>
+      </div>
+
+      <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow hover:scale-105 transition">
+        <img src="assests/jitesh.jpg" alt="Jitesh Sharma" class="w-24 h-24 rounded-full object-cover mb-4 border">
+        <button onclick="vote('Jitesh Sharma')" class="px-4 py-2 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition">Jitesh Sharma</button>
+      </div>
+
+      <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow hover:scale-105 transition">
+        <img src="assests/josh.jpg" alt="Josh Hazelwood" class="w-24 h-24 rounded-full object-cover mb-4 border">
+        <button onclick="vote('Harshal Patel')" class="px-4 py-2 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition">Josh Hazelwood</button>
+      </div>
+
+      <div class="flex flex-col items-center p-4 bg-white rounded-xl shadow hover:scale-105 transition">
+        <img src="assests/Timdavid.jpg" alt="Tim David" class="w-24 h-24 rounded-full object-cover mb-4 border">
+        <button onclick="vote('Tim David')" class="px-4 py-2 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition">Tim David</button>
+      </div>
+    </div>
+
+    <div id="results" class="text-center text-lg font-semibold text-cyan-700 mb-6"></div>
+
+    <section class="bg-white shadow-lg rounded-xl p-6">
+      <h2 class="text-2xl font-bold mb-4 text-center">📊 Voting Summary</h2>
+      <table class="w-full border-collapse text-center">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="p-3">Rank</th>
+            <th class="p-3">Player</th>
+            <th class="p-3">Votes</th>
+            <th class="p-3">Percentage</th>
+          </tr>
+        </thead>
+        <tbody id="voteTable"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    const players = {
+      "Virat Kohli": { votes: 0, photo: "assests/virat.jpg" },
+      "Rajat Patidar": { votes: 0, photo: "assests/Rajat.jpg" },
+      "Phil Salt": { votes: 0, photo: "assests/salt.jpg" },
+      "Jitesh Sharma": { votes: 0, photo: "assests/jitesh.jpg" },
+      "Josh Hazelwood": { votes: 0, photo: "assests/josh.jpg" },
+      "Tim David": { votes: 0, photo: "assests/Timdavid.jpg" }
+    };
+
+    let savedData = JSON.parse(localStorage.getItem("rcb_poll_data")) || {};
+    Object.keys(players).forEach(p => {
+      players[p].votes = savedData[p] || 0;
+    });
+
+    function updateTable() {
+      const total = Object.values(players).reduce((a, p) => a + p.votes, 0) || 1;
+
+      const sortedPlayers = Object.entries(players)
+        .sort((a, b) => b[1].votes - a[1].votes);
+
+      const table = document.getElementById('voteTable');
+      table.innerHTML = sortedPlayers.map(([name, data], index) => {
+        const percent = ((data.votes / total) * 100).toFixed(1);
+        const isLeader = index === 0 && data.votes > 0 ? "bg-yellow-100 font-bold" : "";
+        return `
+          <tr class="hover:bg-cyan-50 ${isLeader}">
+            <td class="p-3">${index + 1}</td>
+            <td class="p-3">${name}</td>
+            <td class="p-3">${data.votes}</td>
+            <td class="p-3">${percent}%</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function vote(player) {
+      players[player].votes++;
+      localStorage.setItem("rcb_poll_data", JSON.stringify(
+        Object.fromEntries(Object.entries(players).map(([k, v]) => [k, v.votes]))
+      ));
+      updateTable();
+
+      const resultDiv = document.getElementById("results");
+      resultDiv.innerHTML = `✅ You voted for <span class="font-bold text-cyan-600">${player}</span> 🎉`;
+
+      confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+
+      setTimeout(() => { resultDiv.innerHTML = ""; }, 3000);
+    }
+
+    updateTable();
+  </script>
+</body>
+
+</html>
