@@ -11,51 +11,58 @@
 <body class="bg-gray-50 text-gray-900 min-h-screen font-sans">
 
  <header class="bg-gradient-to-r from-red-700 via-red-600 to-red-800 p-4 flex justify-between items-center shadow-lg">
+  <!-- Logo -->
   <div class="flex items-center gap-3">
     <img src="assests/logo.png" class="h-13 w-14">
     <h1 class="text-2xl font-bold tracking-wide text-white">RCB Fan Hub</h1>
   </div>
 
-  <!-- Hamburger (mobile only) -->
-  <button id="menuBtn" class="md:hidden text-white text-2xl focus:outline-none">
-    ☰
+  <!-- Mobile Menu Button -->
+  <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+    &#9776;
   </button>
 
-<nav class="hidden md:flex space-x-6 text-sm font-medium text-white items-center relative">
+  <!-- Desktop Nav -->
+  <nav class="hidden md:flex space-x-6 text-sm font-medium text-white items-center relative">
+    <a href="index.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Home</a>
+    <a href="players.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Players</a>
+    <a href="schedule.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Schedule</a>
+    <a href="points.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Points Table</a>
+    <a href="stats.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Stats</a>
+    <a href="polls.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Polls</a>
+    <a href="history.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">History</a>
 
-  <a href="index.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Home</a>
-
-  <a href="players.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Players</a>
-
-  <a href="schedule.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Schedule</a>
-
-  <a href="points.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Points Table</a>
-
-  <a href="stats.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Stats</a>
-
-  <a href="polls.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">Polls</a>
-
-  <a href="history.html" class="relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full transform hover:scale-110 hover:translate-y-[-2px] transition-transform duration-300">History</a>
-
-  <!-- Dropdown Menu -->
-  <div class="relative group">
-    <button class="relative text-white flex items-center focus:outline-none">
-      More <span class="ml-1">&#9662;</span>
-    </button>
-    <div class="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-      <a href="https://dash.royalchallengers.com/collections/mixer-market" class="block px-4 py-2 hover:bg-gray-200">DASH OF RCB</a>
-      <a href="https://www.royalchallengers.com/rcb-cricket-photos" class="block px-4 py-2 hover:bg-gray-200">PHOTOS</a>
-      <a href="https://www.iplt20.com/auction" class="block px-4 py-2 hover:bg-gray-200">AUCTION</a>
-      <a href="https://www.royalchallengers.com/about-us" class="block px-4 py-2 hover:bg-gray-200">ABOUT US</a>
-      <a href="https://www.royalchallengers.com/terms-conditions" class="block px-4 py-2 hover:bg-gray-200">TERMS AND CONDITIONS</a>
+    <!-- Dropdown Menu -->
+    <div class="relative group">
+      <button class="relative text-white flex items-center focus:outline-none">
+        More <span class="ml-1">&#9662;</span>
+      </button>
+      <div class="absolute right-0 mt-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+        <a href="https://dash.royalchallengers.com/collections/mixer-market" class="block px-4 py-2 hover:bg-gray-200">DASH OF RCB</a>
+        <a href="https://www.royalchallengers.com/rcb-cricket-photos" class="block px-4 py-2 hover:bg-gray-200">PHOTOS</a>
+        <a href="https://www.iplt20.com/auction" class="block px-4 py-2 hover:bg-gray-200">AUCTION</a>
+        <a href="https://www.royalchallengers.com/about-us" class="block px-4 py-2 hover:bg-gray-200">ABOUT US</a>
+        <a href="https://www.royalchallengers.com/terms-conditions" class="block px-4 py-2 hover:bg-gray-200">TERMS AND CONDITIONS</a>
+      </div>
     </div>
-  </div>
+  </nav>
 
-</nav>
-
-
+  <!-- Mobile Nav -->
+  <nav id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-red-700 text-white flex-col space-y-4 p-4 md:hidden shadow-lg z-50">
+    <a href="index.html" class="block hover:underline">Home</a>
+    <a href="players.html" class="block hover:underline">Players</a>
+    <a href="schedule.html" class="block hover:underline">Schedule</a>
+    <a href="points.html" class="block hover:underline">Points Table</a>
+    <a href="stats.html" class="block hover:underline">Stats</a>
+    <a href="polls.html" class="block hover:underline">Polls</a>
+    <a href="history.html" class="block hover:underline">History</a>
+    <a href="https://dash.royalchallengers.com/collections/mixer-market" class="block hover:underline">DASH OF RCB</a>
+    <a href="https://www.royalchallengers.com/rcb-cricket-photos" class="block hover:underline">PHOTOS</a>
+    <a href="https://www.iplt20.com/auction" class="block hover:underline">AUCTION</a>
+    <a href="https://www.royalchallengers.com/about-us" class="block hover:underline">ABOUT US</a>
+    <a href="https://www.royalchallengers.com/terms-conditions" class="block hover:underline">TERMS AND CONDITIONS</a>
+  </nav>
 </header>
-
   
 
    <section class="text-center py-10 bg-red-50">
@@ -118,6 +125,14 @@
   </main>
 
   <script>
+
+      const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+  
     const players = {
       "Virat Kohli": { votes: 0, photo: "assests/virat.jpg" },
       "Rajat Patidar": { votes: 0, photo: "assests/Rajat.jpg" },
