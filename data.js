@@ -63,7 +63,7 @@ const INITIAL_DATA = {
     {
       "name": "Rajat Patidar",
       "role": "Batsman",
-      "photo": "assests/rajat.jpg",
+      "photo": "assests/Rajat.jpg",
       "stats": {
         "runs": 200,
         "wickets": 1,
