@@ -303,7 +303,7 @@ const INITIAL_DATA = {
     {
       "name": "Tim Seifert",
       "role": "Batsman",
-      "photo": "assests/tim.jpg",
+      "photo": "assests/Tim.jpg",
       "stats": {
         "runs": 600,
         "wickets": 5,
@@ -1023,7 +1023,7 @@ const INITIAL_DATA = {
     {
       "name": "Liam Livingstone",
       "role": "All-Rounder",
-      "photo": "assests/liam.jpg",
+      "photo": "assests/Liam.jpg",
       "stats": {
         "runs": 1800,
         "wickets": 7,
@@ -1203,7 +1203,7 @@ const INITIAL_DATA = {
     {
       "name": "Tim David",
       "role": "All-Rounder",
-      "photo": "assests/tim.jpg",
+      "photo": "assests/Tim.jpg",
       "stats": {
         "runs": 2100,
         "wickets": 0,
@@ -1263,7 +1263,7 @@ const INITIAL_DATA = {
     {
       "name": "Romario Shepherd",
       "role": "All-Rounder",
-      "photo": "assests/romario.jpg",
+      "photo": "assests/Romario.jpg",
       "stats": {
         "runs": 2200,
         "wickets": 1,
@@ -1323,7 +1323,7 @@ const INITIAL_DATA = {
     {
       "name": "Manoj Bhandage",
       "role": "All-Rounder",
-      "photo": "assests/manoj.jpg",
+      "photo": "assests/Manoj.jpg",
       "stats": {
         "runs": 2300,
         "wickets": 2,
